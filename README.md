@@ -1,36 +1,171 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kyros Tech
 
-## Getting Started
+Site institucional profissional da Kyros Tech, criado com Next.js, TypeScript, React, Tailwind CSS e App Router.
 
-First, run the development server:
+## Tecnologias
+
+- Next.js 16 com App Router
+- TypeScript
+- React
+- Tailwind CSS
+- ESLint
+- Lucide React
+- Framer Motion
+- React Hook Form
+- Zod
+
+## Requisitos
+
+- Node.js LTS
+- npm
+
+## Comandos principais
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run lint
+npm run build
+npm run start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Desenvolvimento
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Acesse `http://localhost:3000`.
 
-## Learn More
+## Build e produção
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+npm run start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Variáveis de ambiente
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Crie `.env.local` com base em `.env.example`.
 
-## Deploy on Vercel
+```bash
+NEXT_PUBLIC_SITE_URL=https://www.seudomínio.com.br
+NEXT_PUBLIC_WHATSAPP_NUMBER=5511999999999
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+`NEXT_PUBLIC_WHATSAPP_NUMBER` é opcional. Se não estiver configurada, o botão de WhatsApp não é exibido.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Dados da empresa
+
+Edite `src/config/site.ts` para alterar:
+
+- nome, slogan e descrição
+- URL do site
+- e-mail
+- telefone
+- WhatsApp
+- redes sociais
+- horário de atendimento
+- endereço futuro
+
+Não coloque chaves privadas em variáveis `NEXT_PUBLIC_`.
+
+## Logo
+
+A estrutura está preparada para receber:
+
+- `public/logo-kyros.svg`
+- `public/logo-kyros.png`
+- `public/logo-kyros-white.svg`
+
+Enquanto a logo oficial não existir, o componente `src/components/layout/Logo.tsx` usa uma marca textual com símbolo abstrato.
+
+## Cores
+
+Os tokens principais ficam em `src/app/globals.css`, dentro de `:root`.
+
+## Formulario
+
+O formulário usa React Hook Form e Zod. A API fica em `src/app/api/contato/route.ts`.
+
+Neste primeiro momento, os dados são validados no cliente e no servidor, e um payload seguro e reduzido é registrado no terminal pelo serviço `src/services/contact-service.ts`.
+
+Esse serviço foi separado para futuras integrações com Supabase, PostgreSQL, Resend, Nodemailer, CRM ou WhatsApp.
+
+## Rotas
+
+- `/`
+- `/solucoes`
+- `/kyros-clock`
+- `/agendabky`
+- `/desenvolvimento-de-sites`
+- `/automacao-de-processos`
+- `/sobre`
+- `/contato`
+- `/politica-de-privacidade`
+- `/termos-de-uso`
+
+## SEO
+
+O projeto usa Metadata API do Next.js, sitemap, robots, manifest e dados estruturados Schema.org para Organization, WebSite, SoftwareApplication e FAQPage.
+
+## Deploy na Vercel
+
+1. Envie o repositório para um Git remoto.
+2. Importe o projeto na Vercel.
+3. Configure as variáveis de ambiente.
+4. Use o build padrão do Next.js.
+
+## Deploy em Ubuntu com Nginx e PM2
+
+Exemplo considerando `/var/www/kyrostech`:
+
+```bash
+sudo apt update
+sudo apt install -y nodejs npm nginx ufw
+sudo npm install -g pm2
+cd /var/www/kyrostech
+npm install
+npm run build
+pm2 start npm --name kyrostech -- start
+pm2 save
+pm2 startup
+```
+
+Copie e ajuste `docs/nginx-kyrostech.conf` para `/etc/nginx/sites-available/kyrostech`.
+
+```bash
+sudo ln -s /etc/nginx/sites-available/kyrostech /etc/nginx/sites-enabled/kyrostech
+sudo nginx -t
+sudo systemctl reload nginx
+sudo ufw allow OpenSSH
+sudo ufw allow 'Nginx Full'
+sudo ufw enable
+sudo apt install -y certbot python3-certbot-nginx
+sudo certbot --nginx -d seu-domínio.com.br -d www.seu-domínio.com.br
+```
+
+Não execute comandos destrutivos no servidor sem backup e revisão.
+
+## Estrutura principal
+
+```text
+src/
+  app/
+  components/
+  config/
+  data/
+  lib/
+  services/
+docs/
+public/
+```
+
+## Pendências antes da publicação oficial
+
+- Informar e-mail, telefone, redes sociais e domínio oficiais.
+- Revisar política de privacidade e termos com apoio jurídico.
+- Substituir a logo temporaria pela identidade visual oficial.
+- Configurar destino real do formulário.
+- Configurar analytics somente se houver base legal e aviso adequado.
