@@ -6,15 +6,17 @@ import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { mainNavigation, productNavigation } from "@/config/navigation";
 import { Logo } from "@/components/layout/Logo";
-import { LinkButton } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { cn } from "@/lib/utils";
+import { getBudgetWhatsAppLink } from "@/lib/whatsapp";
 
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [productsOpen, setProductsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const productsActive = productNavigation.some((item) => isActivePath(pathname, item.href));
+  const budgetLink = getBudgetWhatsAppLink();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
@@ -29,6 +31,7 @@ export function Header() {
   }, [open]);
 
   const close = () => setOpen(false);
+  const closeProducts = () => setProductsOpen(false);
 
   return (
     <header
@@ -59,8 +62,17 @@ export function Header() {
               </Link>
             );
           })}
-          <div className="group relative">
+          <div className="group relative" onMouseLeave={closeProducts}>
             <button
+              type="button"
+              onClick={() => setProductsOpen((current) => !current)}
+              onKeyDown={(event) => {
+                if (event.key === "Escape") {
+                  closeProducts();
+                }
+              }}
+              aria-haspopup="menu"
+              aria-expanded={productsOpen}
               className={cn(
                 "relative inline-flex rounded-lg px-3 py-2 text-sm font-medium transition hover:bg-white/8 hover:text-white",
                 productsActive
@@ -70,7 +82,14 @@ export function Header() {
             >
               Produtos <ChevronDown className="ml-1 size-4" aria-hidden="true" />
             </button>
-            <div className="invisible absolute right-0 top-full w-56 translate-y-2 rounded-xl border border-border bg-slate-950/95 p-2 opacity-0 shadow-2xl shadow-black/30 backdrop-blur-xl transition group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+            <div
+              role="menu"
+              aria-label="Produtos da Kyros Tech"
+              className={cn(
+                "invisible absolute right-0 top-full w-56 translate-y-2 rounded-xl border border-border bg-slate-950/95 p-2 opacity-0 shadow-2xl shadow-black/30 backdrop-blur-xl transition group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100",
+                productsOpen && "visible translate-y-0 opacity-100",
+              )}
+            >
               {productNavigation.map((item) => {
                 const active = isActivePath(pathname, item.href);
 
@@ -78,6 +97,8 @@ export function Header() {
                   <Link
                     key={item.href}
                     href={item.href}
+                    role="menuitem"
+                    onClick={closeProducts}
                     aria-current={active ? "page" : undefined}
                     className={cn(
                       "block rounded-lg px-3 py-2 text-sm hover:bg-white/8 hover:text-white",
@@ -92,7 +113,15 @@ export function Header() {
           </div>
         </nav>
         <div className="hidden lg:block">
-          <LinkButton href="/contato">Solicitar orçamento</LinkButton>
+          <a
+            href={budgetLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Solicitar orçamento pelo WhatsApp"
+            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-transparent bg-primary px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-950/40 transition hover:bg-blue-500 active:bg-blue-700"
+          >
+            Solicitar orçamento
+          </a>
         </div>
         <button
           type="button"
@@ -106,7 +135,7 @@ export function Header() {
       </Container>
 
       {open ? (
-        <div className="fixed inset-0 z-50 bg-background/88 backdrop-blur-xl lg:hidden" role="dialog" aria-modal="true">
+        <div className="fixed inset-0 z-50 bg-background/88 backdrop-blur-xl lg:hidden" role="dialog" aria-modal="true" aria-label="Menu principal">
           <Container className="flex h-20 items-center justify-between">
             <Logo />
             <button
@@ -137,9 +166,16 @@ export function Header() {
                 </Link>
               );
             })}
-            <Link href="/contato" onClick={close} className="mt-3 rounded-xl bg-primary px-4 py-4 text-center text-base font-semibold text-white">
+            <a
+              href={budgetLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Solicitar orçamento pelo WhatsApp"
+              onClick={close}
+              className="mt-3 rounded-xl bg-primary px-4 py-4 text-center text-base font-semibold text-white"
+            >
               Solicitar orçamento
-            </Link>
+            </a>
           </Container>
         </div>
       ) : null}

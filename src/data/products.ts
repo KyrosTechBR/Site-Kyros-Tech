@@ -66,8 +66,8 @@ export const products: Product[] = [
       "Design personalizado",
       "Responsividade",
       "SEO",
-      "Integracao com WhatsApp",
-      "Formularios",
+      "Integração com WhatsApp",
+      "Formulários",
       "Domínio e hospedagem",
       "Manutenção",
     ],
@@ -77,11 +77,11 @@ export const products: Product[] = [
   {
     name: "Automação de processos",
     href: "/automacao-de-processos",
-    eyebrow: "Operacao eficiente",
+    eyebrow: "Operação eficiente",
     description:
       "Soluções desenvolvidas para eliminar tarefas repetitivas e melhorar a operação de empresas.",
     features: [
-      "Digitalizacao de processos",
+      "Digitalização de processos",
       "Painéis administrativos",
       "Relatórios",
       "Integrações",

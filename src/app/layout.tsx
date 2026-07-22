@@ -20,14 +20,19 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
+const defaultTitle = "Kyros Tech | Sites, Sistemas, Automação e Soluções SaaS";
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
+  applicationName: siteConfig.name,
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
   title: {
-    default: "Kyros Tech | Tecnologia que transforma negócios",
+    default: defaultTitle,
     template: "%s | Kyros Tech",
   },
   description: siteConfig.description,
-  keywords: siteConfig.keywords,
+  keywords: [...siteConfig.keywords],
   alternates: { canonical: "/" },
   robots: { index: true, follow: true },
   openGraph: {
@@ -35,13 +40,22 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: "Kyros Tech | Tecnologia que transforma negócios",
+    title: defaultTitle,
     description: siteConfig.description,
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Kyros Tech - Tecnologia que transforma negócios",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kyros Tech | Tecnologia que transforma negócios",
+    title: defaultTitle,
     description: siteConfig.description,
+    images: ["/twitter-image"],
   },
   manifest: "/manifest.webmanifest",
   icons: {
@@ -60,10 +74,20 @@ export const viewport: Viewport = {
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": "ProfessionalService",
   name: siteConfig.name,
   url: siteConfig.url,
   description: siteConfig.description,
+  slogan: siteConfig.slogan,
+  email: siteConfig.emails.contact,
+  telephone: siteConfig.phone.display,
+  sameAs: [
+    siteConfig.social.instagram,
+    siteConfig.social.facebook,
+    siteConfig.social.youtube,
+    siteConfig.social.linkedin,
+    siteConfig.social.tiktok,
+  ],
 };
 
 const websiteJsonLd = {

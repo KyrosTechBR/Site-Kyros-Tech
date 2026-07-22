@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 const features = ["Agenda online", "Gestão de profissionais", "Cadastro de serviços", "Cadastro de clientes", "Controle de horários", "Visualização diária, semanal e mensal", "Confirmação de agendamentos", "Histórico de atendimentos", "Painel administrativo", "Acesso por celular"];
-const problems = ["Horarios anotados em papel", "Mensagens perdidas", "Agendamentos duplicados", "Clientes esquecendo o horário", "Dificuldade de acompanhar a equipe"];
+const problems = ["Horários anotados em papel", "Mensagens perdidas", "Agendamentos duplicados", "Clientes esquecendo o horário", "Dificuldade de acompanhar a equipe"];
 const benefits = ["Agenda centralizada", "Mais organização", "Menos erros", "Melhor atendimento", "Visão clara dos horários disponíveis"];
 
 export default function AgendaBKyPage() {
@@ -45,7 +45,7 @@ export default function AgendaBKyPage() {
           <SectionHeading eyebrow="Organização" title="Menos mensagens. Mais organização." />
           <div className="mt-8 grid gap-6 lg:grid-cols-2">
             <List title="Problemas comuns" items={problems} />
-            <List title="Beneficios esperados" items={benefits} />
+            <List title="Benefícios esperados" items={benefits} />
           </div>
         </Container>
       </section>

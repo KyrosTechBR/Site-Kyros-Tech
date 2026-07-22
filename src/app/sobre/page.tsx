@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/sobre" },
 };
 
-const values = ["Transparencia", "Qualidade", "Evolução contínua", "Simplicidade", "Segurança", "Proximidade com o cliente", "Responsabilidade"];
+const values = ["Transparência", "Qualidade", "Evolução contínua", "Simplicidade", "Segurança", "Proximidade com o cliente", "Responsabilidade"];
 
 export default function AboutPage() {
   return (
@@ -33,7 +33,7 @@ export default function AboutPage() {
         <Container className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           <Card title="Nossa missão" text="Simplificar processos empresariais por meio de tecnologia clara, segura e bem aplicada." />
           <Card title="Nossa visão" text="Ser uma parceira tecnológica confiável para pequenas e médias empresas em evolução." />
-          <Card title="Como pensamos" text="Tecnologia deve resolver problemas reais sem criar complexidade desnecessaria." />
+          <Card title="Como pensamos" text="Tecnologia deve resolver problemas reais sem criar complexidade desnecessária." />
           <Card title="Nosso compromisso" text="Atuar com transparência, responsabilidade e foco na utilidade de cada entrega." />
         </Container>
       </section>

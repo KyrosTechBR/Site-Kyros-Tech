@@ -50,11 +50,18 @@ npm run start
 Crie `.env.local` com base em `.env.example`.
 
 ```bash
-NEXT_PUBLIC_SITE_URL=https://www.seudomínio.com.br
-NEXT_PUBLIC_WHATSAPP_NUMBER=5511999999999
+NEXT_PUBLIC_SITE_URL=https://kyrostech.com.br
+
+SMTP_HOST=
+SMTP_PORT=
+SMTP_USER=
+SMTP_PASSWORD=
+SMTP_FROM_NAME=Kyros Tech
+SMTP_FROM_EMAIL=noreply@kyrostech.com.br
+SMTP_REPLY_TO=suporte@kyrostech.com.br
 ```
 
-`NEXT_PUBLIC_WHATSAPP_NUMBER` é opcional. Se não estiver configurada, o botão de WhatsApp não é exibido.
+As variáveis SMTP são usadas pela rota `src/app/api/contato/route.ts` para enviar os formulários para o e-mail oficial de contato. Não coloque senhas reais no `.env.example`; preencha apenas no `.env.local` ou nas variáveis do servidor.
 
 ## Dados da empresa
 
@@ -62,9 +69,8 @@ Edite `src/config/site.ts` para alterar:
 
 - nome, slogan e descrição
 - URL do site
-- e-mail
-- telefone
-- WhatsApp
+- e-mails oficiais
+- telefone e WhatsApp
 - redes sociais
 - horário de atendimento
 - endereço futuro
@@ -167,5 +173,5 @@ public/
 - Informar e-mail, telefone, redes sociais e domínio oficiais.
 - Revisar política de privacidade e termos com apoio jurídico.
 - Substituir a logo temporaria pela identidade visual oficial.
-- Configurar destino real do formulário.
+- Preencher as credenciais SMTP reais no ambiente de produção.
 - Configurar analytics somente se houver base legal e aviso adequado.

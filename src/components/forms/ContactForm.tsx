@@ -18,6 +18,7 @@ const solutionOptions = [
 
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
   const {
     register,
     handleSubmit,
@@ -25,28 +26,40 @@ export function ContactForm() {
     formState: { errors, isSubmitting },
   } = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
-    defaultValues: { solutionType: "Sistema personalizado", consent: false },
+    defaultValues: { solutionType: "Sistema personalizado", consent: false, website: "" },
   });
 
   async function onSubmit(values: ContactFormValues) {
     setStatus("idle");
+    setMessage("");
+
     const response = await fetch("/api/contato", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
     });
 
+    const payload = await response.json().catch(() => ({ message: "" }));
+
     if (!response.ok) {
       setStatus("error");
+      setMessage(payload.message || "Não foi possível enviar agora. Tente novamente em instantes.");
       return;
     }
 
     setStatus("success");
+    setMessage("Mensagem enviada com sucesso. A Kyros Tech retornará o contato pelos dados informados.");
     reset();
   }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="grid gap-5" noValidate>
+      <div className="hidden" aria-hidden="true">
+        <label>
+          Website
+          <input {...register("website")} tabIndex={-1} autoComplete="off" />
+        </label>
+      </div>
       <Field label="Nome" error={errors.name?.message}>
         <input {...register("name")} className={inputClass} autoComplete="name" />
       </Field>
@@ -78,8 +91,10 @@ export function ContactForm() {
         <span>Li e concordo com a política de privacidade para envio deste contato.</span>
       </label>
       {errors.consent?.message ? <p className="-mt-3 text-sm text-rose-300">{errors.consent.message}</p> : null}
-      {status === "success" ? <p className="rounded-lg border border-emerald-400/30 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-100">Mensagem enviada com sucesso. A Kyros Tech retornará o contato pelos dados informados.</p> : null}
-      {status === "error" ? <p className="rounded-lg border border-rose-400/30 bg-rose-400/10 px-4 py-3 text-sm text-rose-100">Não foi possível enviar agora. Tente novamente em instantes.</p> : null}
+      <div aria-live="polite">
+        {status === "success" ? <p className="rounded-lg border border-emerald-400/30 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-100">{message}</p> : null}
+        {status === "error" ? <p className="rounded-lg border border-rose-400/30 bg-rose-400/10 px-4 py-3 text-sm text-rose-100">{message}</p> : null}
+      </div>
       <Button type="submit" disabled={isSubmitting} className="w-full sm:w-fit">
         {isSubmitting ? <Spinner /> : null}
         {isSubmitting ? "Enviando..." : "Enviar mensagem"}

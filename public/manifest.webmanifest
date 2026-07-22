@@ -1,8 +1,9 @@
 {
   "name": "Kyros Tech",
   "short_name": "Kyros Tech",
-  "description": "Tecnologia que transforma negócios.",
+  "description": "Sites, sistemas, automação e soluções SaaS para empresas.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#02050b",
   "theme_color": "#006dff",

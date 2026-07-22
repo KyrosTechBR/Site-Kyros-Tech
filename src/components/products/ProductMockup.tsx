@@ -23,7 +23,7 @@ export function ProductMockup({ variant = "work" }: { variant?: "work" | "agenda
         <div className="grid gap-4">
           <div className="grid gap-3 sm:grid-cols-3">
             <Metric icon={Users} label={isAgenda ? "Clientes" : "Equipe"} value={isAgenda ? "Organizado" : "Ativa"} />
-            <Metric icon={Clock3} label="Horarios" value="Claros" />
+            <Metric icon={Clock3} label="Horários" value="Claros" />
             <Metric icon={CheckCircle2} label="Status" value="Em dia" />
           </div>
           <div className="rounded-2xl border border-border bg-slate-950/55 p-4">

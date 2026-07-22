@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 const examples = ["Substituir planilhas por um sistema", "Automatizar cadastros", "Criar painéis", "Gerar relatórios", "Organizar solicitações internas", "Centralizar documentos", "Integrar ferramentas", "Automatizar notificações", "Controlar etapas de atendimento"];
-const signals = ["A mesma informação é digitada várias vezes", "Os funcionários dependem de muitas planilhas", "Existe dificuldade para encontrar informações", "Os processos geram muitos erros", "A equipe perde tempo com tarefas repetitivas", "Não ha indicadores claros"];
+const signals = ["A mesma informação é digitada várias vezes", "Os funcionários dependem de muitas planilhas", "Existe dificuldade para encontrar informações", "Os processos geram muitos erros", "A equipe perde tempo com tarefas repetitivas", "Não há indicadores claros"];
 
 export default function AutomationPage() {
   return (

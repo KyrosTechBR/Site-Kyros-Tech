@@ -5,6 +5,7 @@ export const contactSchema = z.object({
   company: z.string().trim().max(120, "Empresa muito longa.").optional().or(z.literal("")),
   phone: z.string().trim().min(8, "Informe um telefone válido.").max(30, "Telefone muito longo."),
   email: z.email("Informe um e-mail válido.").max(160, "E-mail muito longo."),
+  website: z.string().trim().max(120).optional().or(z.literal("")),
   solutionType: z.enum([
     "Kyros Clock",
     "AgendaBKy",
@@ -14,7 +15,7 @@ export const contactSchema = z.object({
     "Outro",
   ]),
   message: z.string().trim().min(10, "Descreva brevemente sua necessidade.").max(1500, "Mensagem muito longa."),
-  consent: z.boolean().refine((value) => value, "Aceite a política de privacidade para contínuar."),
+  consent: z.boolean().refine((value) => value, "Aceite a política de privacidade para continuar."),
 });
 
 export type ContactFormValues = z.infer<typeof contactSchema>;

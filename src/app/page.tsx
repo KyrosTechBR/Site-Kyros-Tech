@@ -49,7 +49,7 @@ const differentials = [
   "Soluções personalizadas",
   "Atendimento próximo",
   "Tecnologia moderna",
-  "Sistemas faceis de usar",
+  "Sistemas fáceis de usar",
   "Desenvolvimento escalável",
   "Segurança e organização",
   "Foco em resultados",
@@ -70,14 +70,14 @@ export default function Home() {
   return (
     <>
       <JsonLd data={faqJsonLd} />
-      <section className="pt-32 pb-20">
-        <Container className="grid items-center gap-12 lg:grid-cols-[0.92fr_1.08fr]">
+      <section className="pb-16 pt-28 sm:pb-20 sm:pt-32">
+        <Container className="grid items-center gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-12">
           <AnimatedReveal>
             <Badge>Kyros Tech</Badge>
-            <h1 className="mt-5 max-w-4xl text-4xl font-bold tracking-normal text-white sm:text-6xl">
+            <h1 className="mt-5 max-w-4xl text-[2.65rem] font-bold leading-[1.04] tracking-normal text-white sm:text-6xl">
               Tecnologia que transforma <span className="text-gradient">negócios.</span>
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-muted">
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-muted sm:text-xl">
               Criamos sites, sistemas e soluções inteligentes para simplificar processos, melhorar a gestão e impulsionar empresas.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -115,7 +115,7 @@ export default function Home() {
       <section className="py-20">
         <Container>
           <SectionHeading
-            eyebrow="Eficiencia"
+            eyebrow="Eficiência"
             title="Empresas mais eficientes com tecnologia"
             description="Muitos negócios crescem com processos improvisados. A Kyros Tech ajuda a transformar esse cenário em uma operação mais simples, clara e controlada."
           />
@@ -163,7 +163,7 @@ export default function Home() {
 
       <section className="py-20">
         <Container>
-          <SectionHeading eyebrow="Metodo" title="Como trabalhamos" align="center" />
+          <SectionHeading eyebrow="Método" title="Como trabalhamos" align="center" />
           <div className="mt-10 grid gap-5 md:grid-cols-4">
             {steps.map(([title, text], index) => (
               <AnimatedReveal key={title} delay={index * 0.05}>
@@ -195,7 +195,7 @@ export default function Home() {
       <section className="py-20">
         <Container>
           <SectionHeading
-            eyebrow="Demonstracao"
+            eyebrow="Demonstração"
             title="Interfaces pensadas para uso real"
             description="Mockups em HTML e CSS mostram a direção visual dos produtos sem depender de imagens genéricas."
           />

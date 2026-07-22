@@ -3,8 +3,8 @@ import { CheckCircle2 } from "lucide-react";
 import { Breadcrumb } from "@/components/seo/Breadcrumb";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { LinkButton } from "@/components/ui/Button";
 import { CTASection } from "@/components/sections/CTASection";
+import { getBudgetWhatsAppLink } from "@/lib/whatsapp";
 
 export const metadata: Metadata = {
   title: "Desenvolvimento de sites",
@@ -43,7 +43,14 @@ export default function SitesPage() {
               <article key={name} className="glass rounded-2xl p-6">
                 <h2 className="text-xl font-semibold text-white">{name}</h2>
                 <p className="mt-3 text-sm leading-6 text-muted">{text}</p>
-                <LinkButton href="/contato" className="mt-6 w-full" variant="secondary">Solicitar orçamento</LinkButton>
+                <a
+                  href={getBudgetWhatsAppLink()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 inline-flex min-h-11 w-full items-center justify-center rounded-lg border border-border bg-white/8 px-5 py-3 text-sm font-semibold text-white transition hover:border-primary-light/60 hover:bg-white/12"
+                >
+                  Solicitar orçamento
+                </a>
               </article>
             ))}
           </div>

@@ -1,21 +1,22 @@
 import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/seo/Breadcrumb";
 import { Container } from "@/components/ui/Container";
+import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Termos de uso",
-  description: "Termos de uso iniciais para navegacao no site da Kyros Tech.",
+  description: "Termos de uso para navegação no site institucional da Kyros Tech.",
   alternates: { canonical: "/termos-de-uso" },
 };
 
 const sections = [
-  ["Aviso importante", "Este conteúdo é uma base inicial e não substitui revisão jurídica antes da publicação definitiva."],
-  ["Uso do site", "O visitante deve utilizar o site de forma lícita, sem tentar comprometer sua segurança, disponibilidade ou integridade."],
-  ["Propriedade intelectual", "Textos, marcas, elementos visuais e códigos pertencem aos seus respectivos titulares e não podem ser copiados sem autorização."],
-  ["Limitação de responsabilidade", "As informações do site são apresentadas para fins institucionais e comerciais, sem promessa automática de resultados, prazos ou preços."],
-  ["Links externos", "Links para canais externos podem direcionar o visitante para plataformas de terceiros, sujeitas as proprias políticas."],
-  ["Alterações", "A Kyros Tech pode atualizar estes termos conforme a evolução do site, dos serviços e das exigências legais."],
-  ["Legislação aplicável", "A interpretação deve observar a legislação brasileira aplicável, incluindo normas de proteção de dados quando houver tratamento de informações pessoais."],
+  ["Uso do site", "O visitante deve utilizar o site de forma lícita, sem tentar comprometer sua segurança, disponibilidade, integridade ou funcionamento."],
+  ["Conteúdo institucional", "As informações publicadas têm finalidade informativa e comercial. Elas podem ser atualizadas conforme a evolução dos serviços, produtos e canais da Kyros Tech."],
+  ["Propriedade intelectual", "Textos, marcas, elementos visuais, códigos, nomes de produtos e demais materiais pertencem à Kyros Tech ou aos seus respectivos titulares."],
+  ["Solicitações comerciais", "O envio de mensagens pelo formulário, e-mail ou WhatsApp não cria obrigação automática de contratação. Propostas, prazos e valores dependem de análise de escopo."],
+  ["Links externos", "Links para redes sociais, WhatsApp e plataformas de terceiros direcionam o visitante para ambientes externos, sujeitos às próprias políticas e condições de uso."],
+  ["Limitação de responsabilidade", "A Kyros Tech busca manter as informações corretas e disponíveis, mas não garante ausência permanente de falhas, indisponibilidades ou erros técnicos."],
+  ["Contato", `Para dúvidas sobre estes termos, fale com a Kyros Tech pelo e-mail ${siteConfig.emails.contact}.`],
 ];
 
 export default function TermsPage() {
@@ -25,6 +26,9 @@ export default function TermsPage() {
       <section className="pb-20 pt-12">
         <Container className="max-w-4xl">
           <h1 className="text-4xl font-bold text-white">Termos de uso</h1>
+          <p className="mt-4 text-sm leading-7 text-muted">
+            Ao navegar pelo site {siteConfig.domain}, você concorda com as condições gerais abaixo.
+          </p>
           <div className="mt-8 grid gap-5">
             {sections.map(([heading, text]) => (
               <article key={heading} className="rounded-2xl border border-border bg-white/[0.03] p-6">

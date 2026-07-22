@@ -3,11 +3,11 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Breadcrumb } from "@/components/seo/Breadcrumb";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { LinkButton } from "@/components/ui/Button";
 import { ServiceCard } from "@/components/sections/ServiceCard";
 import { CTASection } from "@/components/sections/CTASection";
 import { products } from "@/data/products";
 import { businessProblems, solutionCategories } from "@/data/services";
+import { getBudgetWhatsAppLink } from "@/lib/whatsapp";
 
 export const metadata: Metadata = {
   title: "Soluções digitais",
@@ -27,9 +27,14 @@ export default function SolucoesPage() {
             description="A Kyros Tech combina produtos próprios, desenvolvimento personalizado e consultoria para resolver gargalos operacionais com sistemas simples de usar."
           />
           <div className="mt-8">
-            <LinkButton href="/contato">
+            <a
+              href={getBudgetWhatsAppLink()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-transparent bg-primary px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-950/40 transition hover:bg-blue-500 active:bg-blue-700"
+            >
               Solicitar orçamento <ArrowRight className="size-4" aria-hidden="true" />
-            </LinkButton>
+            </a>
           </div>
         </Container>
       </section>
