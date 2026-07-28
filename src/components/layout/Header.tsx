@@ -135,8 +135,8 @@ export function Header() {
       </Container>
 
       {open ? (
-        <div className="fixed inset-0 z-50 bg-background/88 backdrop-blur-xl lg:hidden" role="dialog" aria-modal="true" aria-label="Menu principal">
-          <Container className="flex h-20 items-center justify-between">
+        <div className="fixed inset-0 z-[100] min-h-dvh overflow-y-auto bg-[#010308] lg:hidden" role="dialog" aria-modal="true" aria-label="Menu principal">
+          <Container className="sticky top-0 z-10 flex h-20 items-center justify-between border-b border-border bg-[#010308]">
             <Logo />
             <button
               type="button"
@@ -147,7 +147,7 @@ export function Header() {
               <X className="size-5" aria-hidden="true" />
             </button>
           </Container>
-          <Container className="grid gap-3 pt-6">
+          <Container className="grid gap-3 py-6">
             {[...mainNavigation, ...productNavigation].map((item) => {
               const active = isActivePath(pathname, item.href);
 
