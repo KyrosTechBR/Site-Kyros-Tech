@@ -21,7 +21,7 @@ export const products: Product[] = [
   {
     name: "Kyros Clock",
     href: "/kyros-clock",
-    demoHref: "/demo/kyros-work",
+    demoHref: "/demo/kyros-clock",
     eyebrow: "Jornada e colaborador",
     description: "Sistema inteligente de jornada, ponto eletrônico e portal do colaborador.",
     features: [

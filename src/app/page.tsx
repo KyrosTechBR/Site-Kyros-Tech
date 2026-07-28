@@ -14,7 +14,7 @@ import { products } from "@/data/products";
 import { homeFaq } from "@/data/faq";
 
 export const metadata: Metadata = {
-  title: "Tecnologia que transforma negócios",
+  title: { absolute: "Kyros Tech | Sites, Sistemas, Automação e Soluções SaaS" },
   description:
     "Sites, sistemas, automação de processos, Kyros Clock e AgendaBKy para empresas que querem trabalhar com mais controle e eficiência.",
   alternates: { canonical: "/" },

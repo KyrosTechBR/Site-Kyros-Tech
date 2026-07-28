@@ -6,16 +6,16 @@ import { LinkButton } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
   title: "Demonstrações",
-  description: "Experimente versões demonstrativas do Kyros Work e do AgendaBKy.",
+  description: "Experimente versões demonstrativas do Kyros Clock e do AgendaBKy.",
   robots: { index: false, follow: true },
 };
 
 const demos = [
   {
-    title: "Kyros Work",
+    title: "Kyros Clock",
     description: "Experimente uma versão demonstrativa do sistema de jornada, ponto eletrônico e portal do colaborador.",
-    href: "/demo/kyros-work",
-    cta: "Testar Kyros Work",
+    href: "/demo/kyros-clock",
+    cta: "Testar Kyros Clock",
     icon: Clock3,
   },
   {

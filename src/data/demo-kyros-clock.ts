@@ -1,6 +1,6 @@
 import type { WorkDemoState, WorkRecordType } from "@/types/demos";
 
-export const KYROS_WORK_STORAGE_KEY = "kyros-work-demo-state-v2";
+export const KYROS_CLOCK_STORAGE_KEY = "kyros-clock-demo-state-v2";
 
 export const demoEmployee = {
   name: "Teste",

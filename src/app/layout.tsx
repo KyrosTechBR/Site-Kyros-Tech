@@ -61,9 +61,9 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico" },
-      { url: "/brand/kyros-icon-192.png", type: "image/png", sizes: "192x192" },
+      { url: "/brand/kyros-icon-dark-192.png", type: "image/png", sizes: "192x192" },
     ],
-    apple: "/brand/kyros-icon-192.png",
+    apple: "/apple-icon.png",
   },
 };
 

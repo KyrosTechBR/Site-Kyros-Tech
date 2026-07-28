@@ -29,7 +29,7 @@ export default function KyrosClockPage() {
         subtitle="Jornada inteligente de ponto e portal do colaborador"
         description="Uma plataforma para empresas controlarem a jornada de trabalho, organizarem registros e oferecerem aos colaboradores acesso simples às suas informações."
         cta="Testar demonstração"
-        ctaHref="/demo/kyros-work"
+        ctaHref="/demo/kyros-clock"
         ctaVariant="secondary"
         mockup="work"
       />

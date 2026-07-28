@@ -19,7 +19,7 @@ import {
   TimerReset,
 } from "lucide-react";
 import { ConfirmationModal, ResetDemoButton, SuccessMessage } from "@/components/demos/shared/DemoPrimitives";
-import { demoEmployee, initialWorkDemoState, KYROS_WORK_STORAGE_KEY, workRecordSequence } from "@/data/demo-kyros-work";
+import { demoEmployee, initialWorkDemoState, KYROS_CLOCK_STORAGE_KEY, workRecordSequence } from "@/data/demo-kyros-clock";
 import { clearDemoState, createDemoId, readDemoState, saveDemoState } from "@/lib/demo-storage";
 import type { WorkAdjustment, WorkDemoState, WorkRecordType } from "@/types/demos";
 import { cn } from "@/lib/utils";
@@ -31,7 +31,7 @@ const actionStyles: Record<WorkRecordType, { icon: typeof LogIn; className: stri
   Saída: { icon: LogOut, className: "bg-red-500/70 text-white shadow-[0_0_22px_rgba(239,68,68,0.2)]" },
 };
 
-export function KyrosWorkDemo() {
+export function KyrosClockDemo() {
   const [state, setState] = useState<WorkDemoState>(initialWorkDemoState);
   const [now, setNow] = useState(new Date());
   const [message, setMessage] = useState("");
@@ -41,7 +41,7 @@ export function KyrosWorkDemo() {
 
   useEffect(() => {
     const loadId = window.setTimeout(() => {
-      setState(readDemoState(KYROS_WORK_STORAGE_KEY, initialWorkDemoState));
+      setState(readDemoState(KYROS_CLOCK_STORAGE_KEY, initialWorkDemoState));
     }, 0);
     const interval = window.setInterval(() => setNow(new Date()), 1000);
     return () => {
@@ -51,7 +51,7 @@ export function KyrosWorkDemo() {
   }, []);
 
   useEffect(() => {
-    saveDemoState(KYROS_WORK_STORAGE_KEY, state);
+    saveDemoState(KYROS_CLOCK_STORAGE_KEY, state);
   }, [state]);
 
   const nextRecord = workRecordSequence.find((type) => !state.records.some((record) => record.type === type));
@@ -103,7 +103,7 @@ export function KyrosWorkDemo() {
   }
 
   function resetDemo() {
-    clearDemoState(KYROS_WORK_STORAGE_KEY);
+    clearDemoState(KYROS_CLOCK_STORAGE_KEY);
     setState(initialWorkDemoState);
     setMessage("Demonstração reiniciada.");
   }
