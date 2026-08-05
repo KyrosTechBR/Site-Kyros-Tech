@@ -7,6 +7,7 @@ import { BackgroundEffects } from "@/components/sections/BackgroundEffects";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/config/site";
 import "./globals.css";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -98,18 +99,32 @@ const websiteJsonLd = {
   inLanguage: "pt-BR",
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  const gaId = process.env.NEXT_PUBLIC_GA_ID;
+
+console.log("GA ID:", gaId);
   return (
-    <html lang="pt-BR" className={`${inter.variable} ${geistMono.variable} h-full antialiased`}>
+    <html
+      lang="pt-BR"
+      className={`${inter.variable} ${geistMono.variable} h-full antialiased`}
+    >
       <body className="flex min-h-full flex-col">
         <JsonLd data={organizationJsonLd} />
         <JsonLd data={websiteJsonLd} />
         <BackgroundEffects />
         <Header />
+
         <main className="flex-1">{children}</main>
+
         <Footer />
         <WhatsAppButton />
       </body>
+
+      {gaId ? <GoogleAnalytics gaId={gaId} /> : null}
     </html>
   );
 }
